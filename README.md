@@ -1,1 +1,3 @@
 # TWI
+
+Zadanie laboratoryjne.
