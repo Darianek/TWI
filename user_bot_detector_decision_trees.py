@@ -25,9 +25,11 @@ def prepare_model():
     
 def dt_pretict_bot(screen_name):
     from joblib import load
+    # load pre-trained model
     classifier = load('bot_data/decision_trees.joblib')
     sc = load('bot_data/std_scaler.bin')
-       
+    
+    # get user data for prediction
     user_details = tgud.get_single_user(screen_name)
     user_data = []
     user_data.append(int(user_details['Followers Count']))
@@ -43,7 +45,6 @@ def dt_pretict_bot(screen_name):
     user_data.append(int(user_details['Status count']))
     user_data.append(int(user_details['Default profile']))
     user_data.append(int(user_details['Default profile image']))
-
     user = np.array(user_data)
     user = user.reshape(1, 10)
     user = sc.transform(user)

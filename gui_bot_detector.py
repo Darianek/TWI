@@ -1,8 +1,6 @@
 import wx
 from user_bot_detector_ann import ann_predict_bot
 from user_bot_detector_decision_trees import dt_pretict_bot
-from twitter_get_user import *
-
 
 class BotDetector(wx.Panel):
 

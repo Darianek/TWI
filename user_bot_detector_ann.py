@@ -45,10 +45,12 @@ def prepare_ann_model():
 
 def ann_predict_bot(screen_name):
     from tensorflow import keras
+    # load pre-trained model
     classifier = keras.models.load_model('bot_data/ann_model')
     from joblib import load
     sc = load('bot_data/std_scaler.bin')
     
+    # get user data for prediction
     user_details = tgud.get_single_user(screen_name)
     user_data = []
     user_data.append(int(user_details['Followers Count']))
@@ -64,7 +66,6 @@ def ann_predict_bot(screen_name):
     user_data.append(int(user_details['Status count']))
     user_data.append(int(user_details['Default profile']))
     user_data.append(int(user_details['Default profile image']))
-
     user = np.array(user_data)
     user = user.reshape(1, 10)
     user = sc.transform(user)

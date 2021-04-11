@@ -108,6 +108,8 @@ def get_access_file(safety):
 
 '''
 Download list of friends and followers of given user
+account - Twitter API user object
+client - connection with Twitter API
 '''    
 def get_user_connections(account, client):
     max_pages = math.ceil(MAX_FRIENDS / 5000)
@@ -166,7 +168,6 @@ def create_graph(screen_name, deepth):
                     users_collection.insert_one({"_id": name})
                     # list for users for current depth
                     temp = []
-                    
                     # check friends and followers of given user
                     try:
                         followers, friends = get_user_connections(account, client)
@@ -288,6 +289,7 @@ def create_graph(screen_name, deepth):
 
 '''
 Download details of single user
+screen_name - username
 '''
 def get_single_user(screen_name):
 

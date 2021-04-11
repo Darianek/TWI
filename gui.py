@@ -1,7 +1,6 @@
 import wx
 from gui_get_network import *
 from gui_bot_detector import *
-from gui_misinformation_network import *
 
 class MainMenu(wx.Panel):
 
